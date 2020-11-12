@@ -21,7 +21,7 @@ namespace SuperWPFApplication.model
             set
             {
                 number = value;
-                OnPropertyChanged("num_argument");
+                OnPropertyChanged();
             }
         }
         public int a_argument
@@ -30,7 +30,7 @@ namespace SuperWPFApplication.model
             set 
             { 
                 a = value;
-                OnPropertyChanged("a_argument");
+                OnPropertyChanged();
             }
         }
 
@@ -39,7 +39,7 @@ namespace SuperWPFApplication.model
             get { return b; }
             set 
             {
-                OnPropertyChanged("b_argument");
+                OnPropertyChanged();
                 b = value; 
             }
         }
@@ -49,7 +49,7 @@ namespace SuperWPFApplication.model
             get { return c; }
             set 
             {
-                OnPropertyChanged("c_argument"); 
+                OnPropertyChanged(); 
                 c = value; 
             }
         }

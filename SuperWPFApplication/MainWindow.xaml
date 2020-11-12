@@ -11,20 +11,23 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="0.8*" />
         </Grid.ColumnDefinitions>
-
-        <ListBox Grid.Column="0" ItemsSource="{Binding Counters}"
+        <StackPanel Grid.Column="0">
+            <Button Command="{Binding AddCommand}">Решить уравнение</Button>
+            <ListBox Grid.Column="0" ItemsSource="{Binding Counters}"
                  SelectedItem="{Binding SelectedCounter}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Margin="5">
-                        <TextBlock FontSize="18" Text="{Binding Path=number_arg}" />
-                        <TextBlock Text="{Binding Path=a_argument}" />
-                        <TextBlock Text="{Binding Path=b_argument}" />
-                        <TextBlock Text="{Binding Path=c_argument}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="5">
+                            <TextBlock FontSize="18" Text="{Binding Path=number_arg}" />
+                            <TextBlock Text="{Binding Path=a_argument}" />
+                            <TextBlock Text="{Binding Path=b_argument}" />
+                            <TextBlock Text="{Binding Path=c_argument}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        
 
         <StackPanel Grid.Column="1" DataContext="{Binding SelectedCounter}">
             <TextBlock Text="Выбранный элемент"  />
@@ -34,9 +37,10 @@
             <TextBlock Text="{Binding StringFormat=Значение D \= {0}, Path=d_result, UpdateSourceTrigger=PropertyChanged, TargetNullValue=Значение D \= Нет значения}" />
             <TextBlock Text="{Binding StringFormat=Значение X1 \= {0}, Path=x1_result, UpdateSourceTrigger=PropertyChanged, TargetNullValue=Значение X1 \= Нет значения}" />
             <TextBlock Text="{Binding StringFormat=Значение X2 \= {0}, Path=x2_result, UpdateSourceTrigger=PropertyChanged, TargetNullValue=Значение X2 \= Нет значения}" />
-            <Button Command="{Binding AddCommand}">Решить уравнение</Button>
+            <!--<Button Command="{Binding AddCommand}">Решить уравнение</Button>-->
             <TextBox x:Name="myTextBox" Height="30" />
             <TextBlock x:Name="myTextBlock" Text="{Binding ElementName=myTextBox,Path=Text}" Height="30" />
         </StackPanel>
+        
     </Grid>
 </Window>

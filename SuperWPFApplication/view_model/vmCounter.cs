@@ -16,7 +16,7 @@ namespace SuperWPFApplication.view_model
             set
             {
                 selected_counter = value;
-                OnPropertyChanged("SelectedCounter");
+                OnPropertyChanged();
             }
         }
         
@@ -25,11 +25,12 @@ namespace SuperWPFApplication.view_model
             get
             {
                 Console.WriteLine("Button Pressed");
-                return addCommand ??
+                RelayCommand ret = addCommand ??
                   (addCommand = new RelayCommand(obj =>
                   {
                       selected_counter.calculate();
                   }));
+                return ret;
             }
         }
 
@@ -42,9 +43,7 @@ namespace SuperWPFApplication.view_model
                 new model.Counter { number_arg = 2, a_argument = -5, b_argument = 2, c_argument = 4 },
                 new model.Counter { number_arg = 3, a_argument = 8, b_argument = -20, c_argument = 1 },
             };
-            SelectedCounter = Counters[1];
-
-            //selected_counter = new model.Counter { a_argument = 0, b_argument = 0, c_argument = 0 };
+            SelectedCounter = Counters[3];
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
